@@ -1,0 +1,33 @@
+---
+name: Lint & Validate
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ansible-lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ansible-lint
+        run: pip install ansible-lint
+      - name: Run ansible-lint
+        run: ansible-lint ansible/playbooks/site.yml
+
+  k8s-validate:
+    name: Kubernetes manifest validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install kubeval
+        run: |
+          curl -sL https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+          | tar xz && sudo mv kubeval /usr/local/bin
+      - name: Validate manifests
+        run: |
+          find k8s/ -name "*.yaml" -o -name "*.yml" | \
+          xargs kubeval --ignore-missing-schemas
