@@ -1,0 +1,41 @@
+# Sistema Operativo e IDEs
+.DS_Store
+.appleDouble
+.LSOverride
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ansible
+*.retry
+ansible.log
+roles/
+collections/
+
+# Kubernetes / Helm
+*kubeconfig*
+config-homelab
+.kube/
+*.tgz
+charts/
+
+# Secretos y Credenciales
+*.rsa
+*.dsa
+*.ecdsa
+*.ed25519
+*.pem
+*.key
+*.cert
+*.crt
+.env
+.env.*
+*.local
+*secret*.yaml
+*secret*.yml
+!*sealed-secret*.yaml
+
+# Archivos temporales de datos
+*.bak
+*.tmp
