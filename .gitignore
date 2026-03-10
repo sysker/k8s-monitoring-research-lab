@@ -10,8 +10,6 @@
 # Ansible
 *.retry
 ansible.log
-roles/
-collections/
 
 # Kubernetes / Helm
 *kubeconfig*
