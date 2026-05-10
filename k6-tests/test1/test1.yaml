@@ -1,0 +1,12 @@
+---
+apiVersion: k6.io/v1alpha1
+kind: K6
+metadata:
+  name: k6-sample
+  namespace: testing
+spec:
+  parallelism: 1
+  script:
+    configMap:
+      name: 'k6-test1'
+      file: 'test1.js'
