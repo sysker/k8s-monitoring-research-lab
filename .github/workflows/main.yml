@@ -11,13 +11,23 @@ jobs:
   k8s-validate:
     name: Kubernetes manifest validation
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
+
       - name: Install kubeval
         run: |
           curl -sL https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
           | tar xz && sudo mv kubeval /usr/local/bin
+
       - name: Validate manifests
         run: |
-          find k8s/ -name "*.yaml" -o -name "*.yml" | \
-          xargs kubeval --ignore-missing-schemas
+          mapfile -t manifests < <(find . -name "*.k8s.yaml" -o -name "*.k8s.yml")
+
+          if [ ${#manifests[@]} -eq 0 ]; then
+            echo "No manifests found, skipping validation."
+            exit 0
+          fi
+
+          kubeval --ignore-missing-schemas "${manifests[@]}"
