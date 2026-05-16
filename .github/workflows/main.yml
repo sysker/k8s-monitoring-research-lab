@@ -57,7 +57,7 @@ jobs:
 
       - name: Validate k6 scripts
         run: |
-          mapfile -t scripts < <(find . -path 'k6-tests' -name '*.js')
+          mapfile -t scripts < <(find . -path 'k6-tests/*.js')
 
           if [ ${#scripts[@]} -eq 0 ]; then
             echo "No k6 scripts found, skipping validation."
