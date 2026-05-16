@@ -1,5 +1,5 @@
 # k8s-monitoring-research-lab
-Este repositorio contiene los manifiestos y playbooks necesarios para desplegar un cluster de pruebas con diferentes herramientas de monitorización.
+Este repositorio contiene los manifiestos, aplicaciones y código necesarios para probar la monitorización en un clúster Kubernetes. El objetivo de las pruebas aquí presentes es comparar la monitorización que ofrece Prometheus vs. la que ofrece PodInsights. Para ejecutar los tests se utiliza Grafana k6.
 
 ---
 
