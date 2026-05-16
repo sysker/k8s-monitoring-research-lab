@@ -16,10 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install kubeval
+      - name: Install kubeconform
         run: |
-          curl -sL https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-          | tar xz && sudo mv kubeval /usr/local/bin
+          curl -sL https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz \
+          | tar xz && sudo mv kubeconform /usr/local/bin
 
       - name: Validate manifests
         run: |
@@ -30,4 +30,41 @@ jobs:
             exit 0
           fi
 
-          kubeval --ignore-missing-schemas "${manifests[@]}"
+          kubeconform \
+            -schema-location default \
+            -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+            -summary \
+            "${manifests[@]}"
+
+  k6-validate:
+    name: k6 script validation
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install k6
+        run: |
+          curl -sL https://github.com/grafana/k6/releases/latest/download/k6-linux-amd64.tar.gz \
+          | tar xz --strip-components=1 && sudo mv k6 /usr/local/bin
+
+      - name: Validate k6 scripts
+        run: |
+          mapfile -t scripts < <(find . -path 'k6-tests' -name '*.js')
+
+          if [ ${#scripts[@]} -eq 0 ]; then
+            echo "No k6 scripts found, skipping validation."
+            exit 0
+          fi
+
+          failed=0
+          for script in "${scripts[@]}"; do
+            echo "Validating $script..."
+            if ! k6 run --dry-run "$script" 2>&1; then
+              echo "FAIL: $script"
+              failed=1
+            fi
+          done
+
+          exit $failed
