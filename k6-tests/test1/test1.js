@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function () {
-  http.get('http://');
+  http.get('http://fibonacci-svc.testing.svc.cluster.local/fibonacci');
   sleep(1);
 }

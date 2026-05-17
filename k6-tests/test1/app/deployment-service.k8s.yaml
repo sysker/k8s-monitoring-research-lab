@@ -1,0 +1,55 @@
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibonacci-app
+  namespace: testing
+  labels:
+    app: fibonacci-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fibonacci-app
+  template:
+    metadata:
+      labels:
+        app: fibonacci-app
+    spec:
+      containers:
+        - name: fibonacci-app
+          image: fibonacci-app:latest
+          ports:
+            - containerPort: 8080
+          # Probes usando el endpoint /health de la app
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: fibonacci-svc
+  namespace: testing
+  labels:
+    app: fibonacci-app
+spec:
+  type: ClusterIP
+  selector:
+    app: fibonacci-app
+  ports:
+    - name: http
+      port: 80          # Puerto por el que otros pods llaman al servicio
+      targetPort: 8080  # Puerto en el que escucha el contenedor
