@@ -1,4 +1,4 @@
-import time
+import time, random
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ def fibonacci(n: int) -> int:
 
 @app.route("/fibonacci", methods=["GET"])
 def fibonacci_endpoint():
-    n = 35
+    n = random.randint(35, 65)
     result = fibonacci(n)
 
     return jsonify({
