@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
         - name: fibonacci-app
-          image: fibonacci-app:latest
-          imagePullPolicy: Never
+          image: pablouclm/fibonacci-app:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           # Probes usando el endpoint /health de la app
