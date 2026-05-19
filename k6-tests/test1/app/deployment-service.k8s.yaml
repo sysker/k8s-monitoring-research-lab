@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         app: fibonacci-app
-        podkubemetrics: "true"
+        metrics: "true"
     spec:
       containers:
         - name: fibonacci-app
