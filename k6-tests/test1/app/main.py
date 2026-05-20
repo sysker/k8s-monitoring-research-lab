@@ -18,7 +18,6 @@ def fibonacci_endpoint():
     return jsonify({
         "n": n,
         "result": result,
-        "elapsed_seconds": round(elapsed, 4),
     })
 
 
