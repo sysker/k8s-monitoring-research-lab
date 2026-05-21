@@ -1,2 +1,2 @@
 #!/bin/bash
-kubectl create configmap k6-test1 --from-file test1.js -n "metrics"
+kubectl create configmap k6-tests_unificados --from-file=./JS/ -n "metrics" --dry-run=client -o yaml | kubectl apply -f -
