@@ -8,5 +8,5 @@ spec:
   parallelism: 1
   script:
     configMap:
-      name: 'k6-tests_unificados'
+      name: 'k6-tests-unificados'
       file: 'test02_sustained_cpu.js'
