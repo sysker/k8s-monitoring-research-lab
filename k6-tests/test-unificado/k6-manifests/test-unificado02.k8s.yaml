@@ -2,11 +2,11 @@
 apiVersion: k6.io/v1alpha1
 kind: TestRun
 metadata:
-  name: k6-sample
+  name: k6-test02
   namespace: metrics
 spec:
   parallelism: 1
   script:
     configMap:
-      name: 'k6-test1'
-      file: 'test1.js'
+      name: 'k6-tests_unificados'
+      file: 'test02_sustained_cpu.js'

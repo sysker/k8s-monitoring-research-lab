@@ -1,0 +1,12 @@
+---
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: k6-test01
+  namespace: metrics
+spec:
+  parallelism: 1
+  script:
+    configMap:
+      name: 'k6-tests_unificados'
+      file: 'test01_baseline_low.js'
