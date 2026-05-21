@@ -3,24 +3,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fibonacci-app
+  name: unified-app
   namespace: metrics
   labels:
-    app: fibonacci-app
+    app: unified-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fibonacci-app
+      app: unified-app
   template:
     metadata:
       labels:
-        app: fibonacci-app
+        app: unified-app
         podkubemetrics: "true"
     spec:
       containers:
-        - name: fibonacci-app
-          image: pablouclm/fibonacci-app:latest
+        - name: unified-app
+          image: pablouclm/unified-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -43,14 +43,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fibonacci-svc
+  name: unified-svc
   namespace: metrics
   labels:
-    app: fibonacci-app
+    app: unified-app
 spec:
   type: ClusterIP
   selector:
-    app: fibonacci-app
+    app: unified-app
   ports:
     - name: http
       port: 80          # Puerto por el que otros pods llaman al servicio
