@@ -24,6 +24,14 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          # Límites y reservas de recursos altos
+          resources:
+            requests:
+              cpu: "2"        # reserva 
+              memory: "2Gi"   # reserva 
+            limits:
+              cpu: "3"        # Límite máximo 
+              memory: "8Gi"   # Límite máximo
           # Probes usando el endpoint /health de la app
           livenessProbe:
             httpGet:
