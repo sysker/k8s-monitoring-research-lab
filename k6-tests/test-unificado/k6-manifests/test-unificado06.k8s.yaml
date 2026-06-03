@@ -2,7 +2,7 @@
 apiVersion: k6.io/v1alpha1
 kind: TestRun
 metadata:
-  name: k6-test03
+  name: k6-test06
   namespace: metrics
 spec:
   parallelism: 1
