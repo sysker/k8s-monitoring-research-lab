@@ -28,6 +28,6 @@ const stages = Array.from({ length: totalSteps }, (_, i) => ({
 export const options = { stages };
 
 export default function () {
-  http.post(URL, JSON.stringify({ n: 10 }), PARAMS);
+  http.post(URL, JSON.stringify({ n: 3 }), PARAMS);
   sleep(1);
 }
