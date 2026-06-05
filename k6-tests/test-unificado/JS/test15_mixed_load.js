@@ -9,7 +9,7 @@ import { sleep } from 'k6';
 const URL = 'http://unified-svc.metrics.svc.cluster.local/fibonacci';
 const PARAMS = { headers: { 'Content-Type': 'application/json' } };
 
-const LEVELS = [5, 5, 25, 25, 45];   // pesos: 2/5 ligero, 2/5 medio, 1/5 pesado
+const LEVELS = [5, 5, 5, 5, 15, 15, 35];   // pesos: 4/7 ligero, 2/7 medio, 1/7 pesado
 
 export const options = {
   vus: 30,

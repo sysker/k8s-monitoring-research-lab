@@ -15,6 +15,6 @@ export const options = {
 };
 
 export default function () {
-  http.post(URL, JSON.stringify({ n: 62 }), PARAMS);
-  // Sin sleep: el propio tiempo de cómputo actúa como limitador natural
+  http.post(URL, JSON.stringify({ n: 42 }), PARAMS);
+  sleep(1);
 }
