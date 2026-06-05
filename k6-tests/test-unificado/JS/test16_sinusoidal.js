@@ -14,10 +14,10 @@ const VU_MIN        = 5;    // VUs en el valle
 const VU_MAX        = 40;   // VUs en el pico
 const CYCLES        = 2;    // ciclos completos
 const STEPS_PER_CYCLE = 18; // muestras por ciclo (resolución de la discretización)
-const STEP_DURATION = 5;    // segundos por stage
+const STEP_DURATION = 4;    // segundos por stage
 
 // Fórmula: VU_MIN + (VU_MAX - VU_MIN) * (sin(2π·i/STEPS_PER_CYCLE) + 1) / 2
-const totalSteps = CYCLES * STEPS_PER_CYCLE + 1; // +1 para cerrar la onda en el valle
+const totalSteps = CYCLES * STEPS_PER_CYCLE
 const stages = Array.from({ length: totalSteps }, (_, i) => ({
   duration: `${STEP_DURATION}s`,
   target: Math.round(
