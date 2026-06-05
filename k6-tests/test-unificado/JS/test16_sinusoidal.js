@@ -11,7 +11,7 @@ const PARAMS = { headers: { 'Content-Type': 'application/json' } };
 
 // Parámetros de la onda
 const VU_MIN        = 5;    // VUs en el valle
-const VU_MAX        = 80;   // VUs en el pico
+const VU_MAX        = 40;   // VUs en el pico
 const CYCLES        = 2;    // ciclos completos
 const STEPS_PER_CYCLE = 18; // muestras por ciclo (resolución de la discretización)
 const STEP_DURATION = 5;    // segundos por stage
