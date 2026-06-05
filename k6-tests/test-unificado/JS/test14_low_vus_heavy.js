@@ -16,5 +16,5 @@ export const options = {
 
 export default function () {
   http.post(URL, JSON.stringify({ n: 42 }), PARAMS);
-  sleep(1);
+  sleep(2);
 }
