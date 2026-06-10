@@ -1,5 +1,5 @@
 /**
- * TEST 07 — Picos múltiples repetidos
+ * TEST 04 — Picos múltiples repetidos
  *
  * Objetivo: repetir el patrón de pico/valle varias veces seguidas
  */

@@ -9,4 +9,4 @@ spec:
   script:
     configMap:
       name: 'k6-tests-unificados'
-      file: 'test03_sustained_network.js'
+      file: 'test03_drop.js'

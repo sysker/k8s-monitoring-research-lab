@@ -9,4 +9,4 @@ spec:
   script:
     configMap:
       name: 'k6-tests-unificados'
-      file: 'test07_multi_spike.js'
+      file: 'test07_high_vus_light.js'

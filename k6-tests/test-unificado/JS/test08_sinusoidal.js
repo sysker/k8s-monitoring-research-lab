@@ -1,5 +1,5 @@
 /**
- * TEST 16 — Carga oscilante sinusoidal
+ * TEST 08 — Carga oscilante sinusoidal
  *
  * Objetivo: aproximar una onda sinusoidal de ~90 s de período usando muchos stages cortos
  */

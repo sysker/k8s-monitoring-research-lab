@@ -1,5 +1,5 @@
 /**
- * TEST 10 — Rampa descendente gradual
+ * TEST 06 — Rampa descendente gradual
  *
  * Objetivo: decrementar la carga de forma lineal desde un máximo
  */

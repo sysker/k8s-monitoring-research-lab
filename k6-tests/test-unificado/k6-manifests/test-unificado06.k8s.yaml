@@ -9,4 +9,4 @@ spec:
   script:
     configMap:
       name: 'k6-tests-unificados'
-      file: 'test06_single_spike.js'
+      file: 'test06_ramp_down.js'

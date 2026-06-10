@@ -9,4 +9,4 @@ spec:
   script:
     configMap:
       name: 'k6-tests-unificados'
-      file: 'test04_cpu_network_flood.js'
+      file: 'test04_multi_spike.js'

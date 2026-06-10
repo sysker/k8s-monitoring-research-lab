@@ -1,5 +1,5 @@
 /**
- * TEST 05 — Carga alta sostenida seguida de bajón brusco
+ * TEST 03 — Carga alta sostenida seguida de bajón brusco
  *
  * Objetivo: mantener alta carga durante 60 s y luego cortar de golpe
  */
